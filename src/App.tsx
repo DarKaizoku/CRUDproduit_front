@@ -134,7 +134,7 @@ function App() {
 						setPage={setPage}
 					></ModifierProduit>
 				)}
-				<div className='container row'>
+				<div className='container row table-responsive'>
 					{affichage === 'on' && (
 						<table className='table'>
 							<thead>

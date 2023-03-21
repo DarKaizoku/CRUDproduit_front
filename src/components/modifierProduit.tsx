@@ -129,23 +129,28 @@ export function ModifierProduit(props: {
 							/>
 						</div>
 					</div>
-
-					<button
-						onClick={(e) => update(e)}
-						type='submit'
-						className='btn btn-primary btn-md ms-4 mb-3'
-					>
-						Modifier
-					</button>
-					<button
-						onClick={(e) =>
-							props.setPage('bouton')
-						}
-						type='submit'
-						className='btn btn-warning btn-md ms-4 mb-3'
-					>
-						Annuler
-					</button>
+					<div>
+						<button
+							onClick={(e) =>
+								update(e)
+							}
+							type='submit'
+							className='btn btn-primary btn-md ms-4 mb-3'
+						>
+							Modifier
+						</button>
+						<button
+							onClick={(e) =>
+								props.setPage(
+									'bouton'
+								)
+							}
+							type='submit'
+							className='btn btn-warning btn-md ms-4 mb-3'
+						>
+							Annuler
+						</button>
+					</div>
 				</div>
 			</form>
 		</div>

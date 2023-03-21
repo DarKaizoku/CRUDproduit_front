@@ -91,7 +91,7 @@ export function AjouterProduit(props: {
 								}
 								type='text'
 								className='form-control'
-								placeholder='Nom du produit'
+								placeholder='Prix du produit'
 								name='prix'
 								aria-describedby='addon-wrapping'
 								required
@@ -117,31 +117,36 @@ export function AjouterProduit(props: {
 								}
 								type='text'
 								className='form-control'
-								placeholder='Nom du produit'
+								placeholder='Quantité du produit en stock'
 								name='quantite'
 								aria-describedby='addon-wrapping'
 								required
 							/>
 						</div>
 					</div>
+					<div>
+						<button
+							onClick={(e) =>
+								submitNew(e)
+							}
+							type='submit'
+							className='btn btn-primary btn-md ms-4 mb-3'
+						>
+							Ajouter
+						</button>
 
-					<button
-						onClick={(e) => submitNew(e)}
-						type='submit'
-						className='btn btn-primary btn-md ms-4 mb-3'
-					>
-						Ajouter
-					</button>
-
-					<button
-						onClick={(e) =>
-							props.setPage('bouton')
-						}
-						type='submit'
-						className='btn btn-warning btn-md ms-4 mb-3'
-					>
-						Annuler
-					</button>
+						<button
+							onClick={(e) =>
+								props.setPage(
+									'bouton'
+								)
+							}
+							type='button'
+							className='btn btn-warning btn-md ms-4 mb-3'
+						>
+							Annuler
+						</button>
+					</div>
 				</div>
 			</form>
 		</div>
