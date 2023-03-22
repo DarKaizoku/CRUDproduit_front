@@ -15,9 +15,9 @@ export function AjouterProduit(props: {
 		quantite: 0,
 	};
 
+	//fct de création d'un nouveau produit
 	const submitNew = (e: React.BaseSyntheticEvent) => {
 		e.preventDefault();
-		console.log(newProduit);
 		if (
 			!newProduit.nom ||
 			!newProduit.prix ||

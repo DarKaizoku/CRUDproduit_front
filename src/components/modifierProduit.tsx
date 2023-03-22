@@ -11,6 +11,7 @@ export function ModifierProduit(props: {
 }) {
 	let ProduitUpdated: TProduit = props.produit1;
 
+	//fct de mise à jour de la donnée pour un produit selectionné
 	const update = async (e: React.BaseSyntheticEvent) => {
 		e.preventDefault();
 		if (
@@ -34,6 +35,7 @@ export function ModifierProduit(props: {
 		);
 		const newList = [...ListwitoutUpdate, dataJson.data];
 		props.setProduit(newList);
+		console.log('123');
 	};
 
 	return (
@@ -50,9 +52,7 @@ export function ModifierProduit(props: {
 						<div className='input-group flex-nowrap'>
 							<input
 								defaultValue={
-									props
-										.produit1
-										.nom
+									ProduitUpdated.nom
 								}
 								onChange={(e) =>
 									(ProduitUpdated.nom =
@@ -77,9 +77,7 @@ export function ModifierProduit(props: {
 						<div className='input-group flex-nowrap'>
 							<input
 								defaultValue={
-									props
-										.produit1
-										.prix
+									ProduitUpdated.prix
 								}
 								onChange={(e) =>
 									(ProduitUpdated.prix =
@@ -108,9 +106,7 @@ export function ModifierProduit(props: {
 						<div className='input-group flex-nowrap'>
 							<input
 								defaultValue={
-									props
-										.produit1
-										.quantite
+									ProduitUpdated.quantite
 								}
 								onChange={(e) =>
 									(ProduitUpdated.quantite =
@@ -140,11 +136,11 @@ export function ModifierProduit(props: {
 							Modifier
 						</button>
 						<button
-							onClick={(e) =>
+							onClick={() => {
 								props.setPage(
 									'bouton'
-								)
-							}
+								);
+							}}
 							type='submit'
 							className='btn btn-warning btn-md ms-4 mb-3'
 						>

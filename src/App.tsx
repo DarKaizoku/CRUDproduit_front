@@ -34,6 +34,7 @@ function App() {
 	let listShow;
 	let affichage = 'off';
 
+	//création de l'affichage, de la liste des produits en stock
 	if (produit.length! > 0) {
 		affichage = 'on';
 		listShow = produit!.map((data) => (
@@ -63,7 +64,7 @@ function App() {
 			</tr>
 		));
 	}
-
+	//fonction qui permet la suppression d'un produit
 	const deleteProduit = async (id: number) => {
 		const data = await fetch(baseUrl + id, {
 			method: 'DELETE',
@@ -78,16 +79,11 @@ function App() {
 			setProduit(newList);
 		}
 	};
-
+	//fct qui permet l'affichage de l'element de modification d'un produit
 	const modifier = async (data: TProduit) => {
 		setPage('modifier');
 		setnumero(data);
 	};
-	function AddProduit(e: React.BaseSyntheticEvent) {
-		e.preventDefault();
-
-		return;
-	}
 
 	return (
 		<div className='App text-center'>
