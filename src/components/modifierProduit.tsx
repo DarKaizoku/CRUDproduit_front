@@ -1,4 +1,4 @@
-import { SetStateAction } from 'react';
+import { SetStateAction, useState } from 'react';
 import { TProduit } from '../type/produit.type';
 
 const baseURL = 'http://localhost:8000/produits/';
@@ -11,8 +11,9 @@ export function ModifierProduit(props: {
 }) {
 	let ProduitUpdated: TProduit = props.produit1;
 
+	const [maj, setMaj] = useState<TProduit>(props.produit1);
 	//fct de mise à jour de la donnée pour un produit selectionné
-	const update = async (e: React.BaseSyntheticEvent) => {
+	async function update(e: React.BaseSyntheticEvent) {
 		e.preventDefault();
 		if (
 			!ProduitUpdated.nom ||
@@ -36,7 +37,7 @@ export function ModifierProduit(props: {
 		const newList = [...ListwitoutUpdate, dataJson.data];
 		props.setProduit(newList);
 		console.log('123');
-	};
+	}
 
 	return (
 		<div className='border font-weight-normal mb-2'>
@@ -55,8 +56,12 @@ export function ModifierProduit(props: {
 									ProduitUpdated.nom
 								}
 								onChange={(e) =>
-									(ProduitUpdated.nom =
-										e.target.value)
+									setMaj({
+										...maj,
+										nom: e
+											.target
+											.value,
+									})
 								}
 								type='text'
 								className='form-control'
@@ -79,14 +84,16 @@ export function ModifierProduit(props: {
 								defaultValue={
 									ProduitUpdated.prix
 								}
-								onChange={(e) =>
-									(ProduitUpdated.prix =
-										parseInt(
-											e
-												.target
-												.value
-										))
-								}
+								onChange={(
+									e
+								) => {
+									setMaj({
+										...maj,
+										prix: +e
+											.target
+											.value,
+									});
+								}}
 								type='text'
 								className='form-control'
 								placeholder='Nom du produit'
@@ -109,12 +116,12 @@ export function ModifierProduit(props: {
 									ProduitUpdated.quantite
 								}
 								onChange={(e) =>
-									(ProduitUpdated.quantite =
-										parseInt(
-											e
-												.target
-												.value
-										))
+									setMaj({
+										...maj,
+										quantite: +e
+											.target
+											.value,
+									})
 								}
 								type='text'
 								className='form-control'
@@ -137,6 +144,9 @@ export function ModifierProduit(props: {
 						</button>
 						<button
 							onClick={() => {
+								console.log(
+									props.produit1
+								);
 								props.setPage(
 									'bouton'
 								);
