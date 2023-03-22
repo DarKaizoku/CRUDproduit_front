@@ -15,28 +15,24 @@ export function ModifierProduit(props: {
 	//fct de mise à jour de la donnée pour un produit selectionné
 	async function update(e: React.BaseSyntheticEvent) {
 		e.preventDefault();
-		if (
-			!ProduitUpdated.nom ||
-			!ProduitUpdated.prix ||
-			!ProduitUpdated.quantite
-		) {
+		if (!maj.nom || !maj.prix || !maj.quantite) {
 			return alert(`n'oubliez rien !!`);
 		}
 		const data = await fetch(baseURL + props.produit1.id, {
 			method: 'PATCH',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(ProduitUpdated),
+			body: JSON.stringify(maj),
 		});
 
 		const dataJson = await data.json();
 		alert(dataJson.message);
 
 		const ListwitoutUpdate = props.produit.filter(
-			(data) => data.id !== ProduitUpdated.id
+			(data) => data.id !== maj.id
 		);
 		const newList = [...ListwitoutUpdate, dataJson.data];
 		props.setProduit(newList);
-		console.log('123');
+		props.setPage('bouton');
 	}
 
 	return (
